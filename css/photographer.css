@@ -112,7 +112,14 @@ main .photograph-header .header_details .details_desc {
     line-height: 23px;
 }
 
-main .photograph-header .header_details img {
+main .header_photographer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-profil {
     height: 200px;
     width: 200px;
     border-radius: 50%;

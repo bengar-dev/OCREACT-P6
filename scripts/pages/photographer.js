@@ -7,12 +7,11 @@ async function getPhotographer() {
     await fetch("../data/photographers.json")
       .then((response) => response.json())
       .then((JsonPhotograph) => {
+
         const array = JsonPhotograph.photographers
         const findPhotograph = array.find(p => p.id == currentIdPhotograph)
         let target = document.querySelector(".photograph-header")
         let newPhotographer = new Photographer(findPhotograph)
-
-        
 
         target.append(newPhotographer.getUserDetails())
     

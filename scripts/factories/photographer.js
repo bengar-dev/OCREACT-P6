@@ -47,7 +47,23 @@ class Photographer {
         detailsDiv.append(h2)
         detailsDiv.append(location)
         detailsDiv.append(desc)
-        return detailsDiv
+
+        const btnContact = document.createElement("button")
+        btnContact.setAttribute('class', 'contact_button')
+        btnContact.textContent = `Contactez-moi`
+
+        const picture = `assets/photographers/${this.portrait}`
+        const imgProfil = document.createElement("img")
+        imgProfil.setAttribute("class", "img-profil")
+        imgProfil.setAttribute("src", picture)
+
+        const headerDiv = document.createElement("div")
+        headerDiv.setAttribute("class", "header_photographer")
+        headerDiv.append(detailsDiv)
+        headerDiv.append(btnContact)
+        headerDiv.append(imgProfil)
+
+        return headerDiv
 
     }
 
