@@ -50,6 +50,9 @@ class Photographer {
 
         const btnContact = document.createElement("button")
         btnContact.setAttribute('class', 'contact_button')
+        btnContact.addEventListener('click', () => {
+            displayModal()
+        })
         btnContact.textContent = `Contactez-moi`
 
         const picture = `assets/photographers/${this.portrait}`
