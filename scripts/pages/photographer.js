@@ -21,4 +21,30 @@ async function getPhotographer() {
       });
 }
 
+async function getMedias() {
+    await fetch("../data/photographers.json")
+      .then((response) => response.json())
+      .then((jsonMedias) => {
+        const array = jsonMedias.media
+        array.forEach(media => {
+
+          if(media.photographerId == currentIdPhotograph) {
+            
+            if(media.image) {
+              let imageMediaPhotograph = new Image(media)
+              
+            } else {
+              let videoMediaPhotograph = new Video(media)
+            }
+
+          }
+
+        })
+      })
+      .catch((error) => {
+        return false
+      })
+}
+
 getPhotographer()
+getMedias()
