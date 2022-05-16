@@ -28,11 +28,13 @@ async function getMedias() {
         const array = jsonMedias.media
         array.forEach(media => {
 
+          const articleTarget = document.querySelector('.photograph-medias')
+
           if(media.photographerId == currentIdPhotograph) {
             
             if(media.image) {
               let imageMediaPhotograph = new Image(media)
-              
+              articleTarget.append(imageMediaPhotograph.getImageCard())
             } else {
               let videoMediaPhotograph = new Video(media)
             }

@@ -13,6 +13,18 @@ class Image extends Media {
         super(data)
     }
 
+    getImageCard() {
+        const image = `assets/images/${this.photographerId}/${this.image}`
+        const article = document.createElement("article")
+        const img = document.createElement("img")
+        img.setAttribute("src", image)
+        const h2 = document.createElement("h2")
+        h2.textContent = this.title
+        article.append(img)
+        article.append(h2)
+
+        return article
+    }
     
 }
 
