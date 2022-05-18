@@ -208,3 +208,27 @@ main .header_photographer {
     font-size:24px;
     line-height: 31.25px;
 }
+
+#lightbox {
+    display: flex;
+    position:fixed;
+    z-index: 5;
+    top:0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.lightbox-modal {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lightbox-modal img {
+    position:absolute;
+    top:35px;
+    right:35px;
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(10%) sepia(81%) saturate(3621%) hue-rotate(350deg) brightness(104%) contrast(90%);
+}
