@@ -3,6 +3,12 @@
 const currentParams = new URLSearchParams(document.location.search)
 const currentIdPhotograph = currentParams.get("id")
 
+const firstname = document.querySelector('#firstname')
+const lastname = document.querySelector('#lastname')
+const email = document.querySelector('#email')
+const msg = document.querySelector('#msg')
+const submitBtn = document.querySelector('.contact_button')
+
 async function getPhotographer() {
     const response = await fetch("../data/photographers.json")
     const JsonPhotograph = await response.json()
@@ -32,3 +38,22 @@ async function getMedias() {
 
 getPhotographer()
 getMedias()
+
+submitBtn.addEventListener('click', (e) => {
+
+  e.preventDefault()
+  
+  const data = {
+    firstname: firstname.value,
+    lastname: lastname.value,
+    email: email.value,
+    msg: msg.value
+  }
+  console.log(data)
+  firstname.value = ''
+  lastname.value = ''
+  email.value = ''
+  msg.value = ''
+
+  closeModal()
+})
