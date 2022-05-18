@@ -1,5 +1,14 @@
 #contact_modal {
     display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .2);
+    position:fixed;
+    top:0;
+    z-index: 3;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
 }
 
 .photograph-header {
@@ -22,6 +31,7 @@
 }
 
 .modal {
+    position:relative;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -34,33 +44,55 @@
 }
 
 .modal header {
-    justify-content: space-between;
     width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .modal header img {
+    position:absolute;
+    top:35px;
+    right:35px;
     cursor: pointer;
 }
 
 .modal header h2 {
+    margin:0;
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
 }
 
-form {
+.modal header .modal-photograph {
+    margin:0;
+    font-size: 64px;
+}
+
+.modal textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 170px;
+    border:0px;
+    border-radius: 5px;
+    padding:20px;
+    resize: none;
+    outline: none;
+}
+
+.modal form {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
 }
 
-form label {
+.modal form label {
     color: #312E2E;
     font-size: 36px;
 }
 
-form div {
+.modal form div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -68,7 +100,7 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+.modal form input {
     width: 100%;
     height: 68px;
     border: none;
@@ -149,4 +181,30 @@ main .header_photographer {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.photograph-medias video {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.photograph-infos {
+    background-color: #DB8876;
+    position:fixed;
+    bottom:-10px;
+    right:36px;
+    width: 376px;
+    height: 70px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photograph-infos p {
+    font-weight: 600;
+    font-size:24px;
+    line-height: 31.25px;
 }

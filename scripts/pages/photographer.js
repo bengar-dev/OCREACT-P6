@@ -4,48 +4,30 @@ const currentParams = new URLSearchParams(document.location.search)
 const currentIdPhotograph = currentParams.get("id")
 
 async function getPhotographer() {
-    await fetch("../data/photographers.json")
-      .then((response) => response.json())
-      .then((JsonPhotograph) => {
-
-        const array = JsonPhotograph.photographers
-        const findPhotograph = array.find(p => p.id == currentIdPhotograph)
-        let target = document.querySelector(".photograph-header")
-        let newPhotographer = new Photographer(findPhotograph)
-
-        target.append(newPhotographer.getUserDetails())
-    
-      })
-      .catch((error) => {
-        return false;
-      });
+    const response = await fetch("../data/photographers.json")
+    const JsonPhotograph = await response.json()
+    const array = JsonPhotograph.photographers
+    const findPhotograph = array.find(p => p.id == currentIdPhotograph)
+    const targetHeader = document.querySelector(".photograph-header")
+    let newPhotographer = new Photographer(findPhotograph)
+    targetHeader.append(newPhotographer.getUserDetails())
+    const targetInfos = document.querySelector(".photograph-infos")
+    targetInfos.innerHTML = `<div><p>284 1589 <img src="../assets/icons/heart.png" /></p></div>
+    <div><p>${findPhotograph.price}€/jour</p></div>`
+    const targetModal = document.querySelector(".modal-photograph")
+    targetModal.innerHTML = `${findPhotograph.name}`
 }
 
 async function getMedias() {
-    await fetch("../data/photographers.json")
-      .then((response) => response.json())
-      .then((jsonMedias) => {
-        const array = jsonMedias.media
-        array.forEach(media => {
+  const response = await fetch("../data/photographers.json")
+  const jsonMedias = await response.json()
+  const array = jsonMedias.media
+  array.forEach(media => {
+    if(media.photographerId == currentIdPhotograph) {    
+      MediaFactory.handleMedia(media)
+    }
 
-          const articleTarget = document.querySelector('.photograph-medias')
-
-          if(media.photographerId == currentIdPhotograph) {
-            
-            if(media.image) {
-              let imageMediaPhotograph = new Image(media)
-              articleTarget.append(imageMediaPhotograph.getImageCard())
-            } else {
-              let videoMediaPhotograph = new Video(media)
-            }
-
-          }
-
-        })
-      })
-      .catch((error) => {
-        return false
-      })
+  })
 }
 
 getPhotographer()
