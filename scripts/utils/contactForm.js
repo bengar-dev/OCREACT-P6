@@ -13,7 +13,9 @@ function closeLightbox() {
     modal.style.display = "none"
 }
 
-function displayLightbox() {
+function displayLightbox(image) {
     const modal = document.getElementById("lightbox")
+    const img = document.querySelector('.lightbox-content img')
+    img.setAttribute('src', image)
     modal.style.display = "flex"
 }
