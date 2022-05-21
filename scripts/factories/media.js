@@ -34,6 +34,9 @@ class Image extends Media {
         const article = document.createElement("article")
         const img = document.createElement("img")
         img.setAttribute("src", image)
+        img.addEventListener('click', () => {
+            displayLightbox()
+        })
         const h2 = document.createElement("h2")
         h2.textContent = this.title
         article.append(img)

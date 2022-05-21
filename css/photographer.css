@@ -2,7 +2,7 @@
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(0, 0, 0, .6);
     position:fixed;
     top:0;
     z-index: 3;
@@ -181,6 +181,7 @@ main .header_photographer {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .photograph-medias video {
@@ -210,13 +211,13 @@ main .header_photographer {
 }
 
 #lightbox {
-    display: flex;
+    display: none;
     position:fixed;
     z-index: 5;
     top:0;
     width: 100%;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, .2);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .6);
 }
 
 .lightbox-modal {
@@ -225,10 +226,42 @@ main .header_photographer {
     justify-content: center;
 }
 
-.lightbox-modal img {
+.lightbox-modal .close-modal {
     position:absolute;
     top:35px;
     right:35px;
     cursor: pointer;
     filter: brightness(0) saturate(100%) invert(10%) sepia(81%) saturate(3621%) hue-rotate(350deg) brightness(104%) contrast(90%);
+}
+
+.lightbox-content {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.lightbox-content img {
+    width: auto;
+    max-width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.lightbox-content button {
+    position:absolute;
+    z-index: 30;
+    border:0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.lightbox-content .btn-prev {
+    top:50%;
+    left:50px;
+}
+
+.lightbox-content .btn-next {
+    top:50%;
+    right:50px;
+    transform: rotate(180deg);
 }

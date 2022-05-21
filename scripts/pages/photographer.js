@@ -57,3 +57,5 @@ submitBtn.addEventListener('click', (e) => {
 
   closeModal()
 })
+
+
