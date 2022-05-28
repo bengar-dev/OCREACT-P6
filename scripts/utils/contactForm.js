@@ -10,6 +10,14 @@ function closeModal() {
 
 function closeLightbox() {
     const modal = document.getElementById("lightbox")
+    const lightboxContent = document.querySelector('.lightbox-content')
+    lightboxContent.innerHTML = `
+    <button class="btn-next">
+            <img src="assets/icons/arrow.svg" />
+          </button>
+          <button class="btn-prev">
+            <img src="assets/icons/arrow.svg" />
+          </button>`
     modal.style.display = "none"
 }
 
