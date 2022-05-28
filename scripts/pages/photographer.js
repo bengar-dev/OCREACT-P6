@@ -13,31 +13,27 @@ async function getPhotographer() {
     const response = await fetch("../data/photographers.json")
     const JsonPhotograph = await response.json()
     const array = JsonPhotograph.photographers
+    const arrayMedia = JsonPhotograph.media
     const findPhotograph = array.find(p => p.id == currentIdPhotograph)
+
     const targetHeader = document.querySelector(".photograph-header")
     let newPhotographer = new Photographer(findPhotograph)
     targetHeader.append(newPhotographer.getUserDetails())
+    
     const targetInfos = document.querySelector(".photograph-infos")
     targetInfos.innerHTML = `<div><p>284 1589 <img src="../assets/icons/heart.png" /></p></div>
     <div><p>${findPhotograph.price}€/jour</p></div>`
+
     const targetModal = document.querySelector(".modal-photograph")
     targetModal.innerHTML = `${findPhotograph.name}`
-}
 
-async function getMedias() {
-  const response = await fetch("../data/photographers.json")
-  const jsonMedias = await response.json()
-  const array = jsonMedias.media
-  array.forEach(media => {
-    if(media.photographerId == currentIdPhotograph) {    
-      MediaFactory.handleMedia(media)
-    }
-
-  })
+    const filteredMediaArray = newPhotographer.mediaArray(arrayMedia, newPhotographer)
+    filteredMediaArray.forEach(media => {
+      MediaFactory.handleMedia(media)     
+    })
 }
 
 getPhotographer()
-getMedias()
 
 submitBtn.addEventListener('click', (e) => {
 

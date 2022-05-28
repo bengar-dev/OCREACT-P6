@@ -70,4 +70,9 @@ class Photographer {
 
     }
 
+    mediaArray(array, objectPhotograph) {
+        const findMedia = array.filter(p => p.photographerId == objectPhotograph.id)
+        return findMedia
+    }
+
 }
