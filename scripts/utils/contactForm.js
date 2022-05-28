@@ -16,11 +16,14 @@ function closeLightbox() {
 function displayLightbox(array, indeximg) {
     let index = indeximg
     const modal = document.getElementById("lightbox")
-    const img = document.querySelector('.lightbox-content img')
+    const lightboxContent = document.querySelector('.lightbox-content')
+    const img = document.createElement("img")
+    const video = document.createElement("video")
+    const source = document.createElement("source")
+    video.append(source)
     img.setAttribute('src', `assets/images/${array[index].photographerId}/${array[index].image}`)
+    lightboxContent.append(img)
     modal.style.display = "flex"
-    
-    console.log(array)
     
     const btnNext = document.querySelector('.btn-next')
     const btnPrev = document.querySelector('.btn-prev')
@@ -30,9 +33,13 @@ function displayLightbox(array, indeximg) {
         index += 1
         if(index === array.length) index = 0
         if(array[index].video) {
-            console.log('media vidéo')
+            lightboxContent.removeChild(img)
+            source.setAttribute('src', `assets/images/${array[index].photographerId}/${array[index].video}`)
+            lightboxContent.append(video)
         } else {
+            if(!lightboxContent.contains(img)) lightboxContent.removeChild(video)
             img.setAttribute('src', `assets/images/${array[index].photographerId}/${array[index].image}`)
+            lightboxContent.append(img)
         }
     })
 
@@ -41,9 +48,13 @@ function displayLightbox(array, indeximg) {
         index -= 1
         if(index === 0) index = array.length
         if(array[index].video) {
-            console.log('media vidéo')
+            lightboxContent.removeChild(img)
+            source.setAttribute('src', `assets/images/${array[index].photographerId}/${array[index].video}`)
+            lightboxContent.append(video)
         } else {
+            if(!lightboxContent.contains(img)) lightboxContent.removeChild(video)
             img.setAttribute('src', `assets/images/${array[index].photographerId}/${array[index].image}`)
+            lightboxContent.append(img)
         }
     })
 }

@@ -228,6 +228,7 @@ main .header_photographer {
 
 .lightbox-modal .close-modal {
     position:absolute;
+    z-index: 50;
     top:35px;
     right:35px;
     cursor: pointer;
@@ -245,6 +246,13 @@ main .header_photographer {
     max-width: 80%;
     height: 80%;
     object-fit: cover;
+}
+
+.lightbox-content video {
+    margin:0 auto 0 auto;
+    width: 80%;
+    max-width: 80%;
+    height: 80%;
 }
 
 .lightbox-content button {
