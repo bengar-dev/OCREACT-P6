@@ -252,7 +252,7 @@ main .header_photographer {
     margin:0 auto 0 auto;
     width: 80%;
     max-width: 80%;
-    height: 80%;
+    height: auto;
 }
 
 .lightbox-content button {
