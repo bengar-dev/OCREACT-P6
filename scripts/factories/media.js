@@ -2,13 +2,14 @@ const articleTarget = document.querySelector('.photograph-medias')
 
 class MediaFactory {
 
-    static handleMedia(data) {
+    static handleMedia(data, array) {
+        const indexMedia = array.findIndex(p => p.image === data.image)
         if(data.image) {
             let imageMediaPhotograph = new Image(data)
-            articleTarget.append(imageMediaPhotograph.getImageCard())
+            articleTarget.append(imageMediaPhotograph.getImageCard(array, indexMedia))
         } else {
             let videoMediaPhotograph = new Video(data)
-            articleTarget.append(videoMediaPhotograph.getVideoCard())
+            articleTarget.append(videoMediaPhotograph.getVideoCard(array, indexMedia))
         }
     }
 
@@ -29,13 +30,13 @@ class Image extends Media {
         super(data)
     }
 
-    getImageCard() {
+    getImageCard(array, indexMedia) {
         const image = `assets/images/${this.photographerId}/${this.image}`
         const article = document.createElement("article")
         const img = document.createElement("img")
         img.setAttribute("src", image)
         img.addEventListener('click', () => {
-            displayLightbox(image)
+            displayLightbox(array, indexMedia, image)
         })
         const h2 = document.createElement("h2")
         h2.textContent = this.title

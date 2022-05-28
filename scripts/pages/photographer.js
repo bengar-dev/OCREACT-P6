@@ -29,7 +29,7 @@ async function getPhotographer() {
 
     const filteredMediaArray = newPhotographer.mediaArray(arrayMedia, newPhotographer)
     filteredMediaArray.forEach(media => {
-      MediaFactory.handleMedia(media)     
+      MediaFactory.handleMedia(media, filteredMediaArray)     
     })
 }
 
