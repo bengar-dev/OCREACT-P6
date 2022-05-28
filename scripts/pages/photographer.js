@@ -21,7 +21,7 @@ async function getPhotographer() {
     targetHeader.append(newPhotographer.getUserDetails())
     
     const targetInfos = document.querySelector(".photograph-infos")
-    targetInfos.innerHTML = `<div><p>284 1589 <img src="../assets/icons/heart.png" /></p></div>
+    targetInfos.innerHTML = `<div><p><span>284 1589</span> <img src="../assets/icons/heart.png" /></p></div>
     <div><p>${findPhotograph.price}€/jour</p></div>`
 
     const targetModal = document.querySelector(".modal-photograph")

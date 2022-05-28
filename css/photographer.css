@@ -220,6 +220,35 @@ main .header_photographer {
     background-color: rgba(0, 0, 0, .6);
 }
 
+.title-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article .title-card h2 {
+    padding:0;
+    margin:0;
+}
+
+article .title-card img {
+    width:17.5px;
+    height: 18.35px;
+    object-fit: fill;
+    margin-left:5px;
+}
+
+.count-heart {
+    display: flex;
+    align-items: center;
+}
+
+.count-heart .count-btn {
+    font-size:24px;
+    color:#901C1C;
+    cursor:pointer;
+}
+
 .lightbox-modal {
     width: 100%;
     display: flex;

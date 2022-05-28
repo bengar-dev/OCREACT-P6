@@ -1,72 +1,100 @@
-const articleTarget = document.querySelector('.photograph-medias')
+const articleTarget = document.querySelector(".photograph-medias");
 
 class MediaFactory {
-
-    static handleMedia(data, array) {
-        const indexMedia = array.findIndex(p => p.image === data.image)
-        if(data.image) {
-            let imageMediaPhotograph = new Image(data)
-            articleTarget.append(imageMediaPhotograph.getImageCard(array, indexMedia))
-        } else {
-            let videoMediaPhotograph = new Video(data)
-            articleTarget.append(videoMediaPhotograph.getVideoCard(array, indexMedia))
-        }
+  static handleMedia(data, array) {
+    const indexMedia = array.findIndex((p) => p.image === data.image);
+    if (data.image) {
+      let imageMediaPhotograph = new Image(data);
+      articleTarget.append(
+        imageMediaPhotograph.getImageCard(array, indexMedia)
+      );
+    } else {
+      let videoMediaPhotograph = new Video(data);
+      articleTarget.append(
+        videoMediaPhotograph.getVideoCard(array, indexMedia)
+      );
     }
-
+    let total = 0;
+    const totalCount = document.querySelectorAll(".count-btn");
+    const target = document.querySelector(".photograph-infos div p span");
+    totalCount.forEach((el) => {
+      total += +el.textContent;
+      target.textContent = total;
+    });
+  }
 }
 
 class Media {
-
-    constructor(data) {
-        data && Object.assign(this, data)
-    }
-
+  constructor(data) {
+    data && Object.assign(this, data);
+  }
 }
 
-
 class Image extends Media {
+  constructor(data) {
+    super(data);
+  }
 
-    constructor(data) {
-        super(data)
-    }
+  getImageCard(array, indexMedia) {
+    const image = `assets/images/${this.photographerId}/${this.image}`;
+    const article = document.createElement("article");
+    const img = document.createElement("img");
+    img.setAttribute("src", image);
+    img.addEventListener("click", () => {
+      displayLightbox(array, indexMedia, image);
+    });
+    const title = document.createElement("div");
+    title.classList.add("title-card");
+    const h2 = document.createElement("h2");
+    h2.textContent = this.title;
+    const heart = document.createElement("img");
+    heart.setAttribute("src", "assets/icons/heart.svg");
+    const countDiv = document.createElement("div");
+    countDiv.classList.add("count-heart");
+    const countTxt = document.createElement("span");
+    countTxt.classList.add("count-btn");
+    let value = Math.floor(Math.random() * 60);
+    countTxt.textContent = value;
+    countTxt.addEventListener("click", () => {
+      value++;
+      countTxt.textContent = value;
+      const totalTarget = document.querySelector(".photograph-infos div p span");
+      totalTarget.textContent++
+    });
+    countDiv.append(countTxt);
+    countDiv.append(heart);
+    title.append(h2);
+    title.append(countDiv);
+    article.append(img);
+    article.append(title);
 
-    getImageCard(array, indexMedia) {
-        const image = `assets/images/${this.photographerId}/${this.image}`
-        const article = document.createElement("article")
-        const img = document.createElement("img")
-        img.setAttribute("src", image)
-        img.addEventListener('click', () => {
-            displayLightbox(array, indexMedia, image)
-        })
-        const h2 = document.createElement("h2")
-        h2.textContent = this.title
-        article.append(img)
-        article.append(h2)
-
-        return article
-    }
-    
+    return article;
+  }
 }
 
 class Video extends Media {
+  constructor(data) {
+    super(data);
+  }
 
-    constructor(data) {
-        super(data)
-    }
+  getVideoCard() {
+    const videoUrl = `assets/images/${this.photographerId}/${this.video}`;
+    const article = document.createElement("article");
+    const video = document.createElement("video");
+    const source = document.createElement("source");
+    source.setAttribute("src", videoUrl);
+    video.append(source);
+    const h2 = document.createElement("h2");
+    h2.textContent = this.title;
+    const heart = document.createElement("img");
+    heart.setAttribute("src", "assets/icons/heart.svg");
+    const title = document.createElement("div");
+    title.classList.add("title-card");
+    title.append(h2);
+    title.append(heart);
+    article.append(video);
+    article.append(title);
 
-    getVideoCard() {
-        const videoUrl = `assets/images/${this.photographerId}/${this.video}`
-        const article = document.createElement("article")
-        const video = document.createElement("video")
-        const source = document.createElement("source")
-        source.setAttribute("src", videoUrl)
-        video.append(source)
-        const h2 = document.createElement("h2")
-        h2.textContent = this.title
-        article.append(video)
-        article.append(h2)
-
-        return article
-    }
-    
+    return article;
+  }
 }
