@@ -39,7 +39,9 @@ class Image extends Media {
     const image = `assets/images/${this.photographerId}/${this.image}`;
     const article = document.createElement("article");
     const img = document.createElement("img");
+    const altTxt = this.image.split('.jpg')[0]
     img.setAttribute("src", image);
+    img.setAttribute("alt", `${altTxt}, closeup view`)
     img.addEventListener("click", () => {
       displayLightbox(array, indexMedia, image);
     });
@@ -49,6 +51,7 @@ class Image extends Media {
     h2.textContent = this.title;
     const heart = document.createElement("img");
     heart.setAttribute("src", "assets/icons/heart.svg");
+    heart.setAttribute("alt", "likes")
     const countDiv = document.createElement("div");
     countDiv.classList.add("count-heart");
     const countTxt = document.createElement("span");
@@ -88,6 +91,7 @@ class Video extends Media {
     h2.textContent = this.title;
     const heart = document.createElement("img");
     heart.setAttribute("src", "assets/icons/heart.svg");
+    heart.setAttribute("alt", "likes")
     const title = document.createElement("div");
     title.classList.add("title-card");
     title.append(h2);

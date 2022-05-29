@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,7 +9,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -23,32 +25,34 @@
 				<header>
           <h2>Contactez-moi</h2>
           <span class="modal-photograph"></span>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
         </header>
 				<form>
 					<div>
 						<label for="firstname">Prénom</label>
 						<input type="text" id="firstname"/>
-            <label>Nom</label>
+            <label for="lastname">Nom</label>
 						<input type="text" id="lastname"/>
-            <label>E-mail</label>
+            <label for="email">Email</label>
 						<input type="email" id="email"/>
-            <label>Votre message</label>
-						<textarea id="msg" placeholder="Votre Message"></textarea>
+            <label for="msg">Votre message</label>
+						<textarea id="msg" name="msg" placeholder="Votre Message"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div id="lightbox">
       <div class="lightbox-modal">
-        <img class="close-modal" src="assets/icons/close.svg" onclick="closeLightbox()" />
+        <button>
+          <img class="close-modal" alt="Close dialog" src="assets/icons/close.svg" onclick="closeLightbox()" />
+        </button>
         <div class="lightbox-content">
-          <button class="btn-next">
-            <img src="assets/icons/arrow.svg" />
+          <button class="btn-next" aria-label="Next image">
+            <img src="assets/icons/arrow.svg" alt="Next image"/>
           </button>
-          <button class="btn-prev">
-            <img src="assets/icons/arrow.svg" />
+          <button class="btn-prev" aria-label="Previous image">
+            <img src="assets/icons/arrow.svg" alt="Previous image"/>
           </button>
         </div>
       </div>

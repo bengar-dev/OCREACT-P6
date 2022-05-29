@@ -12,11 +12,11 @@ function closeLightbox() {
     const modal = document.getElementById("lightbox")
     const lightboxContent = document.querySelector('.lightbox-content')
     lightboxContent.innerHTML = `
-    <button class="btn-next">
-            <img src="assets/icons/arrow.svg" />
+    <button class="btn-next" aria-label="Next image">
+            <img src="assets/icons/arrow.svg" alt="Next image"/>
           </button>
-          <button class="btn-prev">
-            <img src="assets/icons/arrow.svg" />
+          <button class="btn-prev" aria-label="Previous image">
+            <img src="assets/icons/arrow.svg" alt="Previous image"/>
           </button>`
     modal.style.display = "none"
 }

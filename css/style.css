@@ -40,6 +40,10 @@ h1 {
 }
 
 .photographer_section article .photograph_link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: #D3573C;
     text-decoration: none;
     transition:all 200ms ease-in-out;
