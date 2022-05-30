@@ -1,10 +1,10 @@
-class Photographer {
+class Photographer { // class Photographer
 
     constructor(data) {
         data && Object.assign(this, data)
     }
 
-    getUserCardDom() {
+    getUserCardDom() { // Création d'une carte photograph dans notre Dom
         const picture = `assets/photographers/${this.portrait}`
         const article = document.createElement("article")
         const img = document.createElement("img")
@@ -33,7 +33,7 @@ class Photographer {
         return article
     }
 
-    getUserDetails() {
+    getUserDetails() { // gestion des informations du photograph
 
         const detailsDiv = document.createElement("div")
         detailsDiv.setAttribute("class", "header_details")
@@ -52,7 +52,7 @@ class Photographer {
         const btnContact = document.createElement("button")
         btnContact.setAttribute('class', 'contact_button')
         btnContact.setAttribute('aria-label', 'Contact Me')
-        btnContact.addEventListener('click', () => {
+        btnContact.addEventListener('click', () => { // listener pour ouvrir notre modal contact
             displayModal()
         })
         btnContact.textContent = `Contactez-moi`
@@ -73,7 +73,7 @@ class Photographer {
 
     }
 
-    mediaArray(array, objectPhotograph) {
+    mediaArray(array, objectPhotograph) { // fonction qui nous retourne un tableau de média correspondant à notre photograph
         const findMedia = array.filter(p => p.photographerId == objectPhotograph.id)
         return findMedia
     }

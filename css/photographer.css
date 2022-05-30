@@ -308,3 +308,36 @@ article .title-card img {
     right:50px;
     transform: rotate(180deg);
 }
+
+.sort-medias {
+    width: 100%;
+    padding:10px 0 0 100px;
+    display: flex;
+    align-items: center;
+}
+
+.sort-medias p {
+    margin:0 20px 0 0;
+    padding:0;
+    font-size: 18px;
+    line-height: 23.44px;
+    font-weight: 700;
+}
+
+.sort-medias select {
+    background: #901C1C;
+    color:white;
+    border:0;
+    border-radius: 5px;
+    padding:10px;
+    font-weight: 700;
+    font-size:18px;
+    outline: none;
+}
+
+.sort-medias select option {
+    font-weight: 700;
+    font-size:18px;
+    padding:20px;
+    display: flex;
+}
